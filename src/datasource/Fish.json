@@ -1,0 +1,102 @@
+{"Fish":[
+    {
+      "id": "1",
+      "name": "Stockfish",
+      "type": "Cod",
+      "origin": "Norway",
+      "price_per_kg": 25,
+      "nutritional_value": {
+        "protein": "80g",
+        "fat": "2g",
+        "calories": 350
+      },
+      "description": "Stockfish is a dried and unsalted fish, primarily cod, widely used in African and European cuisine.",
+      "image": "https://latradcuisine.com/wp-content/uploads/2023/08/Promo-Facebook-Facebook-marketplace-18.jpeg"
+    },
+    {
+      "id": "2",
+      "name": "Dried Anchovies",
+      "type": "Anchovy",
+      "origin": "Thailand",
+      "price_per_kg": 15,
+      "nutritional_value": {
+        "protein": "72g",
+        "fat": "4g",
+        "calories": 320
+      },
+      "description": "Dried anchovies are small fish used in soups, snacks, and various Asian dishes.",
+      "image": "https://afro-exotique.com/wp-content/uploads/2022/02/U6f7ed1fb2df0489fb15c2d26c64f6345b1.jpg"
+    },
+    {
+      "id": "3",
+      "name": "Salted Dry Fish",
+      "type": "Tilapia",
+      "origin": "India",
+      "price_per_kg": 20,
+      "nutritional_value": {
+        "protein": "70g",
+        "fat": "3g",
+        "calories": 310
+      },
+      "description": "Salted dried fish is commonly used in Indian and African cuisine for its rich flavor.",
+      "image": "https://cbx-prod.b-cdn.net/COLOURBOX60012581.jpg"
+    },
+    {
+      "id": "4",
+      "name": "Dried Sardines",
+      "type": "Sardine",
+      "origin": "Philippines",
+      "price_per_kg": 18,
+      "nutritional_value": {
+        "protein": "75g",
+        "fat": "5g",
+        "calories": 330
+      },
+      "description": "Dried sardines are used in Mediterranean and Asian cuisine for their strong taste and high nutrition.",
+      "image": "https://rawinstinctsmia.com/cdn/shop/files/20230903-080704-01.jpg"
+    },
+    {
+      "id": "5",
+      "name": "Dried Catfish",
+      "type": "Catfish",
+      "origin": "Nigeria",
+      "price_per_kg": 22,
+      "nutritional_value": {
+        "protein": "78g",
+        "fat": "6g",
+        "calories": 340
+      },
+      "description": "Dried catfish is a popular ingredient in African soups and stews.",
+      "image": "https://rawinstinctsmia.com/cdn/shop/files/20230903-080704-01.jpg"
+    },
+    {
+        "id": "6",
+        "name": "Dried Anchovies",
+        "type": "Anchovy",
+        "origin": "Thailand",
+        "price_per_kg": 15,
+        "nutritional_value": {
+          "protein": "72g",
+          "fat": "4g",
+          "calories": 320
+        },
+        "description": "Dried anchovies are small fish used in soups, snacks, and various Asian dishes.",
+        "image": "https://afro-exotique.com/wp-content/uploads/2022/02/U6f7ed1fb2df0489fb15c2d26c64f6345b1.jpg"
+      },
+      {
+        "id": "7",
+        "name": "Whole Pink Prawn 500g ",
+        "type": "Poissonnier",
+        "origin": "Thailand",
+        "price_per_kg": 72,
+        "nutritional_value": {
+          "protein": "88g",
+          "fat": "6g",
+          "calories": 333
+        },
+        "description": "A good source of vitamin B3, shrimp contributes to energy production. She brings a good amount of selenium, anti-aging mineral and major anti kilos.",
+        "image": "https://www.mymarket.ma/cdn/shop/products/2700.png"
+      }
+  ]
+}
+  
