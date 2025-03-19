@@ -71,10 +71,9 @@ export default function Home() {
       <div className="container-fluid">
         <div className="row align-items-center">
           <div className="col-12 p-4 p-md-5 text-white">
-            <div className="py-4 py-lg-5 px-lg-4 text-center text-lg-start">
+            <div className="py-4 py-lg-5 px-lg-4 mt-3 text-center text-lg-start">
               <div className="mb-4 mx-auto" style={{ maxWidth: "900px" }}>
-                <span className="badge bg-warning text-dark rounded-pill px-3 py-2 mb-3">Premium Quality</span>
-                <h1 className="display-5 fw-bold mb-2">Premium Fish Exports from 
+                <h1 className="display-5 fw-bold mb-3">Premium Fish Exports from 
                     Morocco</h1>
 
                 <p  className=" p_description opacity-90 fw-bold">
