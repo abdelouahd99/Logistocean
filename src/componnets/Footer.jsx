@@ -66,14 +66,14 @@ const Footer = () => {
                         <Link   className="nav-link text-white opacity-75" to='/'>Home</Link>
                       </li>
                       <li className="mb-2">
-                      <Link   className="nav-link text-white opacity-75" to='/Product'>All Product</Link>
+                      <a  className="nav-link text-white opacity-75" href='/Product'>All Product</a>
                       </li>
                       <li className="mb-2">
                       <Link   className="nav-link text-white opacity-75" to='/About'>About us</Link>
                       </li>
                       
                       <li className="mb-2">
-                      <Link   className="nav-link text-white opacity-75" to='/About'>Contact Us</Link>
+                      <a   className="nav-link text-white opacity-75" href='/contact'>Contact Us</a>
     
                       </li>
                   </ul>
