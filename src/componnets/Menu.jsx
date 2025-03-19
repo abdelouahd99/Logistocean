@@ -1,18 +1,9 @@
 import { Link } from "react-router-dom"
 import logistoceanImage from './assets/images/logo.png';  
-import { useEffect } from "react";
+
 
 export default function Navbar() {
-  useEffect(() => {
-    const navbarToggler = document.querySelector(".navbar-toggler");
-    const navbarMenu = document.querySelector("#navbarNav");
-
-    if (navbarToggler && navbarMenu) {
-      navbarToggler.addEventListener("click", () => {
-        navbarMenu.classList.toggle("show");
-      });
-    }
-  }, []);
+  
   return (
     <nav className="navbar navbar-expand-lg navbar-light shadow-sm fixed-top" style={{ backgroundColor: "#2972b6" }}>
     <div className="container">

@@ -30,8 +30,8 @@ export default function Home() {
   ];
  
   useEffect(()=>{
-    axios.get('http://localhost:5000/Fish')
-    .then(response => { setDatafish(response.data)})
+    axios.get('https://almondine-quilled-fur.glitch.me/Fish.json')
+    .then(response => { setDatafish(response.data.Fish)})
   },[])
   
   

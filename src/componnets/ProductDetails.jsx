@@ -7,6 +7,7 @@ import _ from "lodash";
 
 export default function ProductDetails() {
   const { id } = useParams()
+
   const [product, setProduct] = useState(null)
   const [allproduct,setAllprodutc]=useState([])
   const [loading, setLoading] = useState(true)
@@ -18,8 +19,8 @@ export default function ProductDetails() {
   useEffect(() => {
     const fetchAllProduit = async () => {
       try {
-        const dataRes = await axios.get("http://localhost:5000/Fish");
-        setAllprodutc(dataRes.data);
+        const dataRes = await axios.get("https://almondine-quilled-fur.glitch.me/Fish.json");
+        setAllprodutc(dataRes.data.Fish);
         console.log("data fetched:", dataRes);
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -32,19 +33,27 @@ export default function ProductDetails() {
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        setLoading(true)
-        const response = await axios.get(`http://localhost:5000/Fish/${id}`)
-        setProduct(response.data)
-        setLoading(false)
+        setLoading(true);
+        const response = await axios.get("https://almondine-quilled-fur.glitch.me/Fish.json");
+        const fetchedProducts = response.data.Fish;  
+        const selectedProduct = fetchedProducts.find(item => item.id === id); 
+        
+        if (selectedProduct) {
+          setProduct(selectedProduct); 
+        } else {
+          setError("Product not found");
+        }
+        setLoading(false);
       } catch (error) {
-        console.error("Error fetching product:", error)
-        setError("Failed to load product details. Please try again later.")
-        setLoading(false)
+        console.error("Error fetching product:", error);
+        setError("Failed to load product details. Please try again later.");
+        setLoading(false);
       }
-    }
-
-    fetchProduct()
-  }, [id])
+    };
+  
+    fetchProduct();
+  }, [id]);
+  
 
   if (loading) {
     return (
@@ -85,7 +94,7 @@ export default function ProductDetails() {
 
   return (
     <div className="container py-5 mt-4">
-      {/* Breadcrumb Navigation */}
+     
       <nav aria-label="breadcrumb" className="mb-4">
         <ol className="breadcrumb">
           <li className="breadcrumb-item">
@@ -106,7 +115,7 @@ export default function ProductDetails() {
 
       <div className="card border-0 shadow-sm overflow-hidden">
         <div className="row g-0">
-          {/* Product Image */}
+         
                 <div className="col-md-5 position-relative">
                     <div className="ratio ratio-1x1">
                     <img
@@ -121,7 +130,7 @@ export default function ProductDetails() {
                     </div>
           </div>
 
-          {/* Product Details */}
+         
           <div className="col-md-6 ">
             <div className="card-body   ">
               <div className="d-flex justify-content-between align-items-start mb-2">
