@@ -155,34 +155,52 @@ export default function Home() {
         </div>
         <div className="container py-1">
       <div className="row g-4">
-        {filterproduct.map((product, index) => (
-          <div className="col-md-6 col-lg-3" key={index}>
-            <div className="card h-100 border-0 shadow-sm rounded-3 overflow-hidden">
-              <div className="position-relative">
-                <img
-                  src={product.image }
-                  className="card-img-top img-fluid"
-                  alt={product.name}
-                  style={{ height: "180px", objectFit: "cover" }}
-                />
-                <div className="position-absolute top-0 end-0 p-2">
-                  <span className="badge bg-primary rounded-pill px-3 py-2">${product.price_per_kg}/Kg</span>
+        {filterproduct.length >0 ? (
+
+            filterproduct.map((product, index) => (
+              <div className="col-md-6 col-lg-3" key={index}>
+                <div className="card h-100 border-0 shadow-sm rounded-3 overflow-hidden">
+                  <div className="position-relative">
+                    <img
+                      src={product.image }
+                      className="card-img-top img-fluid"
+                      alt={product.name}
+                      style={{ height: "180px", objectFit: "cover" }}
+                    />
+                    <div className="position-absolute top-0 end-0 p-2">
+                      <span className="badge bg-primary rounded-pill px-3 py-2">${product.price_per_kg}/Kg</span>
+                    </div>
+                  </div>
+                  <div className="d-flex justify-content-between align-items-start mb-3">
+                      <h5 className="card-title fw-bold mb-0">{product.name}</h5>
+                      <span className="badge bg-info text-dark">{product.type}</span>
+                    </div>
+                     <p className="card-text small text-muted mb-3">{product.description}</p>
+                     <div className="mt-auto">
+                      <Link to={`/product/${product.id}`} className="btn btn-warning w-100 rounded-pill fw-medium">View Details</Link>
+                    </div>
+    
+    
+                  
                 </div>
               </div>
-              <div className="d-flex justify-content-between align-items-start mb-3">
-                  <h5 className="card-title fw-bold mb-0">{product.name}</h5>
-                  <span className="badge bg-info text-dark">{product.type}</span>
-                </div>
-                 <p className="card-text small text-muted mb-3">{product.description}</p>
-                 <div className="mt-auto">
-                  <Link to={`/product/${product.id}`} className="btn btn-warning w-100 rounded-pill fw-medium">View Details</Link>
-                </div>
-
-
-              
-            </div>
-          </div>
-        ))}
+            )) 
+        ) : <div className="col-12 text-center mb-5 py-3">
+        <div className="mb-4">
+          <i className="bi bi-search text-muted mb-5" style={{ fontSize: "3rem" }}></i>
+        </div>
+        <h3 className="fw-bold mb-4">No products found</h3>
+        <p className="text-muted mb-5">We couldn't find any products matching your search.</p>
+        <button
+          className="btn btn-outline-primary rounded-pill px-4"
+          onClick={() => {
+            setSearch("")
+           
+          }}
+        >
+          Clear Filters
+        </button>
+      </div>}
       </div>
     </div>
 
