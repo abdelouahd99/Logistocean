@@ -6,6 +6,7 @@ import Contact from "./componnets/Contact";
 import Footer from "./componnets/Footer";
 import ProductDetails from './componnets/ProductDetails.jsx';
 import SlideB from './componnets/SlideB.jsx';
+import WhatsAppButton from './componnets/Whatssap.jsx';
 import "bootstrap-icons/font/bootstrap-icons.css";
 import { BrowserRouter , Routes, Route } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -17,6 +18,7 @@ function App() {
     <>
       <BrowserRouter>
       <Menu />
+      <WhatsAppButton/>
      
       <Routes>
         <Route path="/" element={<Home />} />
