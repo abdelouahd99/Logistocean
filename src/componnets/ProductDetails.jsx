@@ -31,29 +31,29 @@ export default function ProductDetails() {
   }, []); 
 
   useEffect(() => {
-    const fetchProduct = async () => {
-      try {
-        setLoading(true);
-        const response = await axios.get("https://almondine-quilled-fur.glitch.me/Fish.json");
-        const fetchedProducts = response.data.Fish;  
-        const selectedProduct = fetchedProducts.find(item => item.id === id); 
-        
-        if (selectedProduct) {
-          setProduct(selectedProduct); 
-        } else {
-          setError("Product not found");
-        }
-        setLoading(false);
-      } catch (error) {
-        console.error("Error fetching product:", error);
-        setError("Failed to load product details. Please try again later.");
-        setLoading(false);
+  const fetchProduct = async () => {
+    try {
+      setLoading(true);
+      const response = await axios.get("https://almondine-quilled-fur.glitch.me/Fish.json");
+      const fetchedProducts = response.data.Fish;  // All products
+      const selectedProduct = fetchedProducts.find(item => item.id === id); // Find product by ID
+      
+      if (selectedProduct) {
+        setProduct(selectedProduct); // Set the selected product
+      } else {
+        setError("Product not found");
       }
-    };
-  
-    fetchProduct();
-  }, [id]);
-  
+      setLoading(false);
+    } catch (error) {
+      console.error("Error fetching product:", error);
+      setError("Failed to load product details. Please try again later.");
+      setLoading(false);
+    }
+  };
+
+  fetchProduct();
+}, [id]);
+
 
   if (loading) {
     return (
@@ -94,7 +94,7 @@ export default function ProductDetails() {
 
   return (
     <div className="container py-5 mt-4">
-     
+      {/* Breadcrumb Navigation */}
       <nav aria-label="breadcrumb" className="mb-4">
         <ol className="breadcrumb">
           <li className="breadcrumb-item">
@@ -115,7 +115,7 @@ export default function ProductDetails() {
 
       <div className="card border-0 shadow-sm overflow-hidden">
         <div className="row g-0">
-         
+          {/* Product Image */}
                 <div className="col-md-5 position-relative">
                     <div className="ratio ratio-1x1">
                     <img
@@ -130,7 +130,7 @@ export default function ProductDetails() {
                     </div>
           </div>
 
-         
+          {/* Product Details */}
           <div className="col-md-6 ">
             <div className="card-body   ">
               <div className="d-flex justify-content-between align-items-start mb-2">

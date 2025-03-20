@@ -8,6 +8,8 @@ import { useEffect, useState } from "react";
 
 export default function Home() {
     const [datafish,setDatafish]=useState([])
+    const [search,setSearch]=useState('')
+    const[filterproduct,setFilterproduct]=useState([])
    
 
   const whyChose = [
@@ -33,7 +35,24 @@ export default function Home() {
     axios.get('https://almondine-quilled-fur.glitch.me/Fish.json')
     .then(response => { setDatafish(response.data.Fish)})
   },[])
+   useEffect(()=>{
+          if(search){
+              const Searchproduct = datafish.filter((p) => p.name.toLowerCase().includes(search.toLowerCase()))
+              setFilterproduct(Searchproduct)
+              document.getElementsByClassName('hero-section')[0].style.height = '55vh';
+              
+
+
+              
   
+          }
+          
+          else{
+              setFilterproduct(datafish)
+              document.getElementsByClassName('hero-section')[0].style.height = '85vh';
+
+          }
+      },[search,datafish])
   
 
   return (
@@ -90,14 +109,15 @@ export default function Home() {
                   </span>
                   <input
                     type="text"
-                    className="form-control border-0 py-1"
+                    className="form-control border-0 py-2"
                     placeholder="Search our products..."
-                  />
-                  <button className="btn btn-warning px-4">Search</button>
+                    value={search}
+                    onChange={(e) => setSearch(e.target.value)}
+                    />
                 </div>
               </div>
 
-              <div className="d-flex flex-wrap gap-3 mb-4 justify-content-center justify-content-lg-start">
+              <div className="d-flex flex-wrap gap-3 mb-4 justify-content-center justify-content-lg-center">
                 <Link to="/product" className="btn btn-light btn-lg rounded-pill px-3 d-flex align-items-center">
                   <Fish className="me-2" size={20} />
                   Browse Our Products
@@ -135,7 +155,7 @@ export default function Home() {
         </div>
         <div className="container py-1">
       <div className="row g-4">
-        {datafish.map((product, index) => (
+        {filterproduct.map((product, index) => (
           <div className="col-md-6 col-lg-3" key={index}>
             <div className="card h-100 border-0 shadow-sm rounded-3 overflow-hidden">
               <div className="position-relative">
