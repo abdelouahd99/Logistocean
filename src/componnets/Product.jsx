@@ -1,12 +1,21 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { Pagination} from "react-bootstrap";
+
 
 export default function Products() {
     const [product, setProduct] = useState([]);
     const [Filterproduct,setFilterproduct]=useState([])
     const[selecttype,setSelecttype]=useState('')
     const [search,setSearch]=useState('')
+    const [currentPage, setCurrentPage] = useState(1);
+    const productPerPage = 4;
+    const indexOfLastproduct = currentPage * productPerPage;
+    const indexOfFirstproduct = indexOfLastproduct - productPerPage;
+    const currentproduct = Filterproduct.slice(indexOfFirstproduct, indexOfLastproduct);
+    const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
 
     useEffect(() => {
         const fetchProduct = async () => {
@@ -96,14 +105,21 @@ export default function Products() {
 
      
       <div className="row g-4">
-        {Filterproduct.length > 0 ? (
-          Filterproduct.map((product, index) => (
+        {currentproduct.length > 0 ? (
+          currentproduct.map((product, index) => (
             <div className="col-sm-6 col-md-4 col-lg-3" key={index}>
-              <div className="card h-100 border-0 shadow-sm rounded-3 overflow-hidden">
-                <div className="position-relative">
+                <Link
+            to={`/product/${product.id}`}
+            className="text-decoration-none text-dark"
+            
+          >
+
+              <div className="card h-100 border-2 shadow-sm rounded-3 overflow-hidden transition-all hover-shadow">
+            
+                <div className="position-relative overflow-hidden product-img-container">
                   <img
                     src={product.image }
-                    className="card-img-top"
+                    className="card-img-top img-fluid transition-transform "
                     alt={product.name}
                     style={{ height: "180px", objectFit: "cover" }}
                   />
@@ -128,8 +144,12 @@ export default function Products() {
                   </div>
                 </div>
               </div>
+          </Link>
+                
             </div>
+            
           ))
+          
         ) : (
           <div className="col-12 text-center py-5">
             <div className="mb-4">
@@ -149,6 +169,32 @@ export default function Products() {
           </div>
         )}
       </div>
+      <Pagination className="mt-3 justify-content-center justify-content-lg-center">
+                {Array.from({ length: Math.ceil(Filterproduct.length / productPerPage) }, (_, i) => (
+                    <Pagination.Item key={i + 1} active={i + 1 === currentPage} onClick={() => paginate(i + 1)}>
+                        {i + 1}
+                    </Pagination.Item>
+                ))}
+            </Pagination>
+
+            <style jsx>{`
+        .hover-shadow:hover {
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1) !important;
+  transform: translateY(-8px);
+}
+
+.transition-all {
+  transition: all 0.3s ease;
+}
+
+.transition-transform {
+  transition: transform 0.5s ease;
+}
+
+.product-img-container:hover .transition-transform {
+  transform: scale(1.05);
+}
+      `}</style>
 
    
       

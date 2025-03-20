@@ -265,7 +265,9 @@ export default function ProductDetails() {
     <h3 className="fw-bold mb-4">You May Also Like</h3>
     <div className="row g-4">
       {randomSelection.map((item) => (
-        <div className="col-md-6 col-lg-3" key={item.id}> {/* Use item.id as the unique key */}
+        <div className="col-md-6 col-lg-3" key={item.id}>
+          <Link to={`/product/${item.id}`} className="text-decoration-none text-dark">
+             
           <div className="card h-100 border-0 shadow-sm">
             <img
               src={item.image} // Ensure item.image exists
@@ -286,6 +288,7 @@ export default function ProductDetails() {
                                   </Link>
             </div>
           </div>
+             </Link>
         </div>
       ))}
     </div>

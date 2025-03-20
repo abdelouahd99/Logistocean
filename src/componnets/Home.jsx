@@ -57,6 +57,9 @@ export default function Home() {
 
   return (
     <div className="fish-export-website" >
+            
+
+
     
      
     <div
@@ -153,64 +156,75 @@ export default function Home() {
             <p className="text-muted">Explore our premium selection of Moroccan seafood</p>
           </div>
         </div>
-        <div className="container py-1">
+        <div className="container py-4">
       <div className="row g-4">
-        {filterproduct.length >0 ? (
-
-            filterproduct.map((product, index) => (
-              <div className="col-md-6 col-lg-3" key={index}>
-                <div className="card h-100 border-0 shadow-sm rounded-3 overflow-hidden">
-                  <div className="position-relative">
+        {filterproduct.length > 0 ? (
+          filterproduct.slice(0, 4).map((product, index) => (
+            <div className="col-sm-6 col-lg-3 border-1" key={index} >
+              <Link to={`/product/${product.id}`} className="text-decoration-none">
+                <div className="card h-100 border-2 shadow-sm rounded-4 overflow-hidden transition-all hover-shadow">
+                  <div className="position-relative overflow-hidden product-img-container">
                     <img
-                      src={product.image }
-                      className="card-img-top img-fluid"
+                      src={product.image || "/placeholder.svg"}
+                      className="card-img-top img-fluid transition-transform"
                       alt={product.name}
-                      style={{ height: "180px", objectFit: "cover" }}
+                      style={{ height: "200px", objectFit: "cover" }}
                     />
-                    <div className="position-absolute top-0 end-0 p-2">
-                      <span className="badge bg-primary rounded-pill px-3 py-2">${product.price_per_kg}/Kg</span>
+                    <div className="position-absolute top-0 end-0 p-3">
+                      <span className="badge bg-primary rounded-pill px-3 py-2 fw-semibold shadow-sm">
+                        ${product.price_per_kg}/Kg
+                      </span>
                     </div>
                   </div>
-                  <div className="d-flex justify-content-between align-items-start mb-3">
-                      <h5 className="card-title fw-bold mb-0">{product.name}</h5>
-                      <span className="badge bg-info text-dark">{product.type}</span>
-                    </div>
-                     <p className="card-text small text-muted mb-3">{product.description}</p>
-                     <div className="mt-auto">
-                      <Link to={`/product/${product.id}`} className="btn btn-warning w-100 rounded-pill fw-medium">View Details</Link>
-                    </div>
-    
-    
-                  
+                  <div className="card-body d-flex flex-column p-4">
+                    <div className="d-flex justify-content-between align-items-start mb-2">
+                      <h5 className="card-title fw-bold mb-0 text-dark">{product.name}</h5>
+                      <span className="badge bg-info text-dark rounded-pill px-3 py-2 ms-2 fw-medium">
+                        {product.type}
+                      </span>
+                    </div>
+                    <p className="card-text text-muted mb-3 small">{product.description}</p>
+                    <div className="mt-auto ">
+                      <Link to={`/product/${product.id}`} className="btn btn-warning w-100 justify-content-center rounded-pill fw-medium py-2 shadow-sm">View Details </Link>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            )) 
-        ) : <div className="col-12 text-center mb-5 py-3">
-        <div className="mb-4">
-          <i className="bi bi-search text-muted mb-5" style={{ fontSize: "3rem" }}></i>
-        </div>
-        <h3 className="fw-bold mb-4">No products found</h3>
-        <p className="text-muted mb-5">We couldn't find any products matching your search.</p>
-        <button
-          className="btn btn-outline-primary rounded-pill px-4"
-          onClick={() => {
-            setSearch("")
-           
-          }}
-        >
-          Clear Filters
-        </button>
-      </div>}
+              </Link>
+            </div>
+          ))
+        ) : (
+          <div className="col-12 text-center my-5 py-5">
+            <div className="mb-4">
+              <i className="bi bi-search text-muted" style={{ fontSize: "3.5rem" }}></i>
+            </div>
+            <h3 className="fw-bold mb-3">No products found</h3>
+            <p className="text-muted mb-4">We couldn't find any products matching your search.</p>
+            <button
+              className="btn btn-outline-primary rounded-pill px-4 py-2 fw-medium"
+              onClick={() => {
+                setSearch("")
+              }}
+            >
+              <i className="bi bi-arrow-counterclockwise me-2"></i>
+              Clear Filters
+            </button>
+          </div>
+        )}
       </div>
     </div>
 
     
 
         <div className="text-center ">
-          <Link to="/product" className="btn btn-warning btn-lg rounded-pill px-1 d-inline-flex align-items-center">
-            View All Products
-            <ChevronRight size={20} className="ms-2" />
-          </Link>
+        <Link
+      to="/product"
+      className="btn btn-warning btn-lg rounded-pill px-3 py-2 d-inline-flex align-items-center justify-content-center fw-semibold shadow-custom position-relative overflow-hidden button-animated"
+    >
+      <span className="me-2">View All Products</span>
+      <div className="icon-container d-flex align-items-center justify-content-center">
+        <ChevronRight size={20} className="chevron-icon" />
+      </div>
+    </Link>
         </div>
       </div>
 
@@ -256,6 +270,89 @@ export default function Home() {
         </div>
         </div>
       </div>
+      <style jsx>{`
+        .hover-shadow:hover {
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1) !important;
+  transform: translateY(-5px);
+}
+
+.transition-all {
+  transition: all 0.3s ease;
+}
+
+.transition-transform {
+  transition: transform 0.5s ease;
+}
+
+.product-img-container:hover .transition-transform {
+  transform: scale(1.05);
+}
+  /* Add these styles to your global CSS */
+.shadow-custom {
+  box-shadow: 0 4px 15px rgba(255, 193, 7, 0.3);
+  transition: all 0.3s ease;
+  border: none;
+}
+
+.shadow-custom:hover {
+  box-shadow: 0 6px 20px rgba(255, 193, 7, 0.4);
+  transform: translateY(-2px);
+}
+
+.shadow-custom:active {
+  transform: translateY(1px);
+  box-shadow: 0 2px 10px rgba(255, 193, 7, 0.3);
+}
+
+.button-animated {
+  background: linear-gradient(45deg, #ffb700, #ffc107);
+  border: none;
+  position: relative;
+  z-index: 1;
+}
+
+.button-animated::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, #ff9500, #ffb700);
+  opacity: 0;
+  z-index: -1;
+  transition: opacity 0.3s ease;
+  border-radius: 50px;
+}
+
+.button-animated:hover::before {
+  opacity: 1;
+}
+
+.icon-container {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  margin-left: 5px;
+  transition: transform 0.3s ease;
+}
+
+.button-animated:hover .icon-container {
+  transform: translateX(3px);
+}
+
+.chevron-icon {
+  transition: transform 0.6s ease;
+}
+
+.button-animated:hover .chevron-icon {
+  transform: translateX(2px);
+}
+
+
+      `}</style>
+      
 
       
       
