@@ -1,10 +1,42 @@
 import React from 'react';
 import { Link } from "react-router-dom"
+import Swal from 'sweetalert2'
+
 import {  Anchor } from "lucide-react"
-import logistoceanImage from './assets/images/logo.png';  // Correct relative path
+import logistoceanImage from './assets/images/logo.png'; 
 
 
 const Footer = () => {
+  const onSubmit = async (event) => {
+    event.preventDefault();
+    const formData = new FormData(event.target);
+
+    formData.append("access_key", "2188aacc-0f2d-4279-88c3-6f15a58e2c2c");
+    formData.append("message", `New subscription for Newsletter`);
+
+    const object = Object.fromEntries(formData);
+    const json = JSON.stringify(object);
+
+    const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json"
+        },
+        body: json
+    }).then((res) => res.json());
+
+    if (res.success) {
+        Swal.fire({
+            title: "Thank You!",
+            text: "You are Now subscribed!",
+            icon: "success"
+        });
+    }
+
+    event.target.reset();
+};
+
   return (
     <footer className="bg-dark text-white pt-4 pb-2">
             <div className="container">
@@ -66,14 +98,14 @@ const Footer = () => {
                         <Link   className="nav-link text-white opacity-75" to='/'>Home</Link>
                       </li>
                       <li className="mb-2">
-                      <a  className="nav-link text-white opacity-75" href='/Product'>All Product</a>
+                      <Link  className="nav-link text-white opacity-75" to='/Product'>All Product</Link>
                       </li>
                       <li className="mb-2">
                       <Link   className="nav-link text-white opacity-75" to='/About'>About us</Link>
                       </li>
                       
                       <li className="mb-2">
-                      <a   className="nav-link text-white opacity-75" href='/contact'>Contact Us</a>
+                      <Link  className="nav-link text-white opacity-75" to='/Contact'>Contact Us</Link>
     
                       </li>
                   </ul>
@@ -145,10 +177,10 @@ const Footer = () => {
                       <span className="opacity-75">+212 700000000</span>
                     </li>
                   </ul>
-                  <form className="mt-4">
+                  <form className="mt-4" onSubmit={onSubmit}>
                     <div className="input-group mb-3">
-                      <input type="email" className="form-control" placeholder="Your email" />
-                      <button className="btn btn-warning" type="button">
+                      <input type="email" className="form-control" name='email' placeholder="Your email..." required />
+                      <button type="submit" className="btn btn-warning">
                         Subscribe
                       </button>
                     </div>
