@@ -5,7 +5,7 @@ import About from "./componnets/AboutUs";
 import Contact from "./componnets/Contact";
 import Footer from "./componnets/Footer";
 import ProductDetails from './componnets/ProductDetails.jsx';
-import SlideB from './componnets/SlideB.jsx';
+import SmallNav from './componnets/SmallNav.jsx';
 import ScrollToTop from './componnets/ScroolTop.jsx';
 import WhatsAppButton from './componnets/Whatssap.jsx';
 import "bootstrap-icons/font/bootstrap-icons.css";
@@ -19,6 +19,8 @@ function App() {
     <>
       <BrowserRouter>
       <Menu />
+      <SmallNav/>
+     
       <WhatsAppButton/>
       <ScrollToTop/>
      
