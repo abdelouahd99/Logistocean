@@ -151,8 +151,8 @@ export default function Products() {
           ))
           
         ) : (
-          <div className="col-12 text-center py-5">
-            <div className="mb-4">
+          <div className="col-12 text-center">
+            <div className="">
               <i className="bi bi-search text-muted" style={{ fontSize: "3rem" }}></i>
             </div>
             <h3 className="fw-bold mb-2">No products found</h3>

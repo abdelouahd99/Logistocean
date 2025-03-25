@@ -6,7 +6,7 @@ const WhatsAppButton = () => {
   const handleClick = () => {
     setShowNotification(true);
     setTimeout(() => setShowNotification(false), 3000); 
-    window.open("https://wa.me/212649031153", "_blank"); // Replace YOURNUMBER with your WhatsApp number
+    window.open("https://wa.me/212649031153", "_blank"); // Replace with your WhatsApp number
   };
 
   return (
@@ -39,6 +39,7 @@ const WhatsAppButton = () => {
           box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
           cursor: pointer;
           transition: transform 0.2s;
+          z-index: 9999; /* Ensures it stays above everything */
         }
         .whatsapp-btn:hover {
           transform: scale(1.1);
@@ -57,6 +58,7 @@ const WhatsAppButton = () => {
           border-radius: 5px;
           box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
           font-size: 14px;
+          z-index: 9999; /* Keeps the notification above all elements */
         }
       `}</style>
     </>

@@ -86,6 +86,17 @@ export default function Home() {
             background-image: url('https://images.pexels.com/photos/213399/pexels-photo-213399.jpeg');
           }
         }
+          @media (max-width: 768px) {
+      .hero-section {
+        height: 40vh; /* Adjusted height for mobile */
+      }
+
+      /* Ensuring the images look good on mobile */
+      .hero-section {
+        background-size: cover;
+        background-position: center center;
+      }
+    }
       `}</style>
       
 
@@ -185,7 +196,7 @@ export default function Home() {
                     </div>
                     <p className="card-text text-muted mb-3 small">{product.description}</p>
                     <div className="mt-auto ">
-                      <Link to={`/product/${product.id}`} className="btn btn-warning w-100 justify-content-center rounded-pill fw-medium py-2 shadow-sm">View Details </Link>
+                      <Link to={`/product/${product.id}`} className="btn btn-warning w- justify-content-center rounded-pill fw-medium py-2 shadow-sm">View Details </Link>
                     </div>
                   </div>
                 </div>
@@ -272,7 +283,7 @@ export default function Home() {
       </div>
       <style jsx>{`
         .hover-shadow:hover {
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1) !important;
+  box-shadow: 0 10px 25px rgba(31, 30, 30, 0.1) !important;
   transform: translateY(-5px);
 }
 
